@@ -15,9 +15,19 @@ module pico_top (
     output wire        halted
 );
 
-    /*
-     * PICO-TINO integration will be completed on Day 4.
-     * This Day 0 declaration freezes the external interface.
-     */
+    pico_core u_core (
+        .clk        (clk),
+        .reset_n    (reset_n),
+
+        .imem_addr  (imem_addr),
+        .imem_rdata (imem_rdata),
+
+        .dmem_addr  (dmem_addr),
+        .dmem_rdata (dmem_rdata),
+        .dmem_wdata (dmem_wdata),
+        .dmem_we    (dmem_we),
+
+        .halted     (halted)
+    );
 
 endmodule
